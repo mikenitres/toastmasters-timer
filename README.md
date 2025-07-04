@@ -1,4 +1,4 @@
-# TalkTrack Timer
+# Toastmasters Timer
 A Toastmasters Timer made for Timers
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -7,13 +7,14 @@ A Toastmasters Timer made for Timers
 [![Bun](https://img.shields.io/badge/Bun-000?logo=bun&logoColor=fff)](https://bun.sh)
 
 A professional timing tool for Toastmasters meetings with dual-screen functionality - perfect for both physical and virtual meetings.
+
 _I recommended using a desktop or laptop for ease of use._
-_Also, it is usable but I am still planning to add some styling for the control panel_
+_Also, it is usable but I am still planning to add some styling for the main page_
 
 ## Features
 
 - **Dual-screen workflow**:
-  - **Control Panel**: Set custom timing thresholds
+  - **Main Page**: Set custom timing thresholds
   - **Present View**: Clean, full-screen color display
 - **Customizable thresholds**:
   - 🟢 Green (Qualified)
@@ -24,13 +25,13 @@ _Also, it is usable but I am still planning to add some styling for the control 
 ## Usage
 
 1. **Setup**:
-   - Open the Control Panel (`/`)
+   - Open the main page
    - Configure your timing thresholds
-   - Click "Open Present View" (opens in new window)
+   - Click "Open Present View" (opens in either a new window or tab depending on your browser settings - if as a tab, move it to separate window)
 
 2. **During Meeting**:
-   - Share the Present View window (fullscreen for best effect)
-   - Manage timing from Control Panel
+   - Share the Present View window `/present` (fullscreen for best effect)
+   - Manage timing from main page
    - Colors auto-update in real-time
 
 ## Development

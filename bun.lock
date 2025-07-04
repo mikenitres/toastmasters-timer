@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "toastmasters-timer-for-timers",
+      "name": "toastmasters-timer",
       "dependencies": {
         "@astrojs/alpinejs": "^0.4.8",
         "@types/alpinejs": "^3.13.11",
