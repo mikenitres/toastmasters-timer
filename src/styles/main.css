@@ -1,8 +1,30 @@
-/* Add these to your existing main.css */
+body {
+    margin: 0;
+    /* Adds padding around entire page */
+    padding: 2rem;
+    min-height: 100vh;
+    /* Ensures padding is included in height calculation */
+    box-sizing: border-box;
+}
+
+.timer-container {
+    /* Constrains content width */
+    max-width: 100rem;
+    /* Centers the container */
+    margin: 0 auto;
+}
+
+.timer-card {
+    /* Space below the title */
+    margin-top: 1.5rem;
+    /* Inner spacing */
+    padding: 0.5rem;
+}
 
 h2 {
     font-size: 1.25rem;
-    margin: 1.5rem 0 0.5rem 0;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
     color: #444;
 }
 
@@ -22,4 +44,19 @@ h2 {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
+}
+
+a[href="/present"] {
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 1rem;
+    }
+
+    .timer-card {
+        padding: 1.5rem;
+    }
 }
