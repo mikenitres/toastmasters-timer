@@ -9,20 +9,54 @@ import "../styles/present.css";
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body>
-        <div class="present-display bg-white"></div>
+        <div class="present-display bg-white" id="presentDisplay"></div>
         <script>
-            // Update color based on the saved state's color from toastmastersTimer key
-            function updateColor() {
-                const savedState =
-                    JSON.parse(localStorage.getItem("toastmastersTimer")) || {};
-                const color = savedState.currentColor || "white";
-                document.querySelector(".present-display").className =
-                    `present-display bg-${color}`;
+            // State management
+            let clickCyclingEnabled = true;
+            const colors = ["white", "green", "yellow", "red"];
+            let currentClickIndex = 0;
+            const presentDisplay = document.getElementById("presentDisplay");
+
+            // Click handler for manual cycling when going through rules to speaker
+            presentDisplay.addEventListener("click", () => {
+                if (!clickCyclingEnabled) return;
+
+                currentClickIndex = (currentClickIndex + 1) % colors.length;
+                updateDisplay(colors[currentClickIndex]);
+                updateLocalStorage(colors[currentClickIndex]);
+            });
+
+            // Display update helper
+            function updateDisplay(color) {
+                presentDisplay.className = `present-display bg-${color}`;
             }
 
-            // Update immediately and then every 500ms
-            updateColor();
-            setInterval(updateColor, 500);
+            function updateLocalStorage(color) {
+                const savedState =
+                    JSON.parse(localStorage.getItem("toastmastersTimer")) || {};
+                savedState.currentColor = color;
+                localStorage.setItem(
+                    "toastmastersTimer",
+                    JSON.stringify(savedState),
+                );
+            }
+
+            // Polling for timer updates
+            setInterval(() => {
+                const savedState =
+                    JSON.parse(localStorage.getItem("toastmastersTimer")) || {};
+                // Disable click cycling if timer is running
+                clickCyclingEnabled = savedState.elapsedTime == 0;
+                // If timer is controlling colors, update display and reset click index to 0
+                if (!clickCyclingEnabled) {
+                    currentClickIndex = 0;
+                }
+                if (currentClickIndex == 0) {
+                    updateDisplay(savedState.currentColor || "white");
+                }
+            }, 250);
+
+            updateDisplay("white");
         </script>
     </body>
 </html>

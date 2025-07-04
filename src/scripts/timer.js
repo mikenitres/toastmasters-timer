@@ -68,6 +68,11 @@ export function timerApp() {
                 this.updateColor();
                 this.triggerColorUpdate();
             }, 1000);
+
+            localStorage.setItem('toastmastersTimer', JSON.stringify({
+                ...JSON.parse(localStorage.getItem('toastmastersTimer') || '{}'),
+                elapsedTime: this.elapsedTime
+            }));
         },
 
         pauseTimer() {
@@ -79,6 +84,10 @@ export function timerApp() {
 
         resetTimer() {
             this.pauseTimer();
+            localStorage.setItem('toastmastersTimer', JSON.stringify({
+                ...JSON.parse(localStorage.getItem('toastmastersTimer') || '{}'),
+                elapsedTime: 0,
+            }));
             this.elapsedTime = 0;
             this.currentColor = 'white';
             this.updatePresentDisplay();
