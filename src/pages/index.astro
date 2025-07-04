@@ -1,16 +1,158 @@
 ---
-
+import "../styles/main.css";
 ---
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Toastmasters Timer for Timers</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script>
+			import { timerApp } from "../scripts/timer";
+			window.timerApp = timerApp;
+		</script>
 	</head>
+
 	<body>
-		<h1>Astro</h1>
+		<main class="timer-container">
+			<h1>Toastmasters Timer for Timers</h1>
+
+			<div class="timer-card" x-data="timerApp()" x-init="init()">
+				<!-- Timer Display -->
+				<div class="timer-display">
+					<div class="time" x-text="formatTime(elapsedTime)"></div>
+					<div class="timer-controls">
+						<button
+							@click="startTimer()"
+							x-show="!isRunning"
+							class="btn btn-start">Start</button
+						>
+						<button
+							@click="pauseTimer()"
+							x-show="isRunning"
+							class="btn btn-pause">Pause</button
+						>
+						<button @click="resetTimer()" class="btn btn-reset"
+							>Reset</button
+						>
+					</div>
+				</div>
+
+				<h2>Green Threshold (Qualified)</h2>
+				<div class="time-input-group">
+					<div class="setting-group">
+						<label>Minutes</label>
+						<input
+							type="number"
+							x-model="greenMinutes"
+							@change="greenMinutes = validateMinutes($event.target.value)"
+							min="0"
+							max="100"
+							class="time-input"
+							value="1"
+						/>
+					</div>
+					<div class="setting-group">
+						<label>Seconds</label>
+						<input
+							type="number"
+							x-model="greenSeconds"
+							@change="greenSeconds = validateSeconds($event.target.value)"
+							min="0"
+							max="59"
+							class="time-input"
+							value="0"
+						/>
+					</div>
+				</div>
+
+				<h2>Yellow Threshold (Warning)</h2>
+				<div class="time-input-group">
+					<div class="setting-group">
+						<label>Minutes</label>
+						<input
+							type="number"
+							x-model="yellowMinutes"
+							@change="yellowMinutes = validateMinutes($event.target.value)"
+							min="0"
+							max="100"
+							class="time-input"
+							value="1"
+						/>
+					</div>
+					<div class="setting-group">
+						<label>Seconds</label>
+						<input
+							type="number"
+							x-model="yellowSeconds"
+							@change="yellowSeconds = validateSeconds($event.target.value)"
+							min="0"
+							max="59"
+							class="time-input"
+							value="30"
+						/>
+					</div>
+				</div>
+
+				<h2>Red Threshold (Danger)</h2>
+				<div class="time-input-group">
+					<div class="setting-group">
+						<label>Minutes</label>
+						<input
+							type="number"
+							x-model="redMinutes"
+							@change="redMinutes = validateMinutes($event.target.value)"
+							min="0"
+							max="100"
+							class="time-input"
+							value="2"
+						/>
+					</div>
+					<div class="setting-group">
+						<label>Seconds</label>
+						<input
+							type="number"
+							x-model="redSeconds"
+							@change="redSeconds = validateSeconds($event.target.value)"
+							min="0"
+							max="59"
+							class="time-input"
+							value="0"
+						/>
+					</div>
+				</div>
+
+				<h2>Reset Threshold (Disqualified)</h2>
+				<div class="time-input-group">
+					<div class="setting-group">
+						<label>Minutes</label>
+						<input
+							type="number"
+							x-model="resetMinutes"
+							@change="resetMinutes = validateMinutes($event.target.value)"
+							min="0"
+							max="100"
+							class="time-input"
+							value="2"
+						/>
+					</div>
+					<div class="setting-group">
+						<label>Seconds</label>
+						<input
+							type="number"
+							x-model="resetSeconds"
+							@change="resetSeconds = validateSeconds($event.target.value)"
+							min="0"
+							max="59"
+							class="time-input"
+							value="30"
+						/>
+					</div>
+				</div>
+				<a href="/present" target="_blank">
+					Open Presentation Display
+				</a>
+			</div>
+		</main>
 	</body>
 </html>

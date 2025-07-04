@@ -1,0 +1,25 @@
+/* Add these to your existing main.css */
+
+h2 {
+    font-size: 1.25rem;
+    margin: 1.5rem 0 0.5rem 0;
+    color: #444;
+}
+
+.time-input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.time-input-group .setting-group {
+    flex: 1;
+}
+
+.time-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}

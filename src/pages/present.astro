@@ -1,0 +1,28 @@
+---
+import "../styles/present.css";
+---
+
+<html lang="en">
+    <head>
+        <title>Toastmasters Presentation Display</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="present-display bg-white"></div>
+        <script>
+            // Update color based on the saved state's color from toastmastersTimer key
+            function updateColor() {
+                const savedState =
+                    JSON.parse(localStorage.getItem("toastmastersTimer")) || {};
+                const color = savedState.currentColor || "white";
+                document.querySelector(".present-display").className =
+                    `present-display bg-${color}`;
+            }
+
+            // Update immediately and then every 500ms
+            updateColor();
+            setInterval(updateColor, 500);
+        </script>
+    </body>
+</html>
