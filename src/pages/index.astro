@@ -14,10 +14,26 @@ import "../styles/main.css";
 	</head>
 
 	<body>
-		<main class="timer-container">
+		<main class="timer-container" x-data="timerApp()" x-init="init()">
 			<h1>Toastmasters Timer for Timers</h1>
 
-			<div class="timer-card" x-data="timerApp()" x-init="init()">
+			<div class="preset-selector">
+				<select
+					id="preset"
+					x-model="preset"
+					@change="applyPreset()"
+					class="preset-select"
+				>
+					<option value="" disabled>Select a Timing Preset</option>
+					<option value="evaluation">Evaluation (2:00-3:00)</option>
+					<option value="iceBreaker">Ice Breaker (4:00-6:00)</option>
+					<option value="prepared">Prepared Speech (5:00-7:00)</option
+					>
+					<option value="tableTopics">Table Topics (1:00-2:00)</option
+					>
+				</select>
+			</div>
+			<div class="timer-card">
 				<!-- Timer Display -->
 				<div class="timer-display">
 					<div class="time" x-text="formatTime(elapsedTime)"></div>

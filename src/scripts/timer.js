@@ -24,6 +24,51 @@ export function timerApp() {
         resetMinutes: Math.floor((savedState.resetThreshold || 2.5 * 60) / 60),
         resetSeconds: (savedState.resetThreshold || 2.5 * 60) % 60,
 
+        // Presets
+        preset: '',
+        presets: {
+            tableTopics: {
+                greenMinutes: 1,
+                greenSeconds: 0,
+                yellowMinutes: 1,
+                yellowSeconds: 30,
+                redMinutes: 2,
+                redSeconds: 0,
+                resetMinutes: 2,
+                resetSeconds: 30
+            },
+            prepared: {
+                greenMinutes: 5,
+                greenSeconds: 0,
+                yellowMinutes: 6,
+                yellowSeconds: 0,
+                redMinutes: 7,
+                redSeconds: 0,
+                resetMinutes: 7,
+                resetSeconds: 30
+            },
+            iceBreaker: {
+                greenMinutes: 4,
+                greenSeconds: 0,
+                yellowMinutes: 5,
+                yellowSeconds: 0,
+                redMinutes: 6,
+                redSeconds: 0,
+                resetMinutes: 6,
+                resetSeconds: 30
+            },
+            evaluation: {
+                greenMinutes: 2,
+                greenSeconds: 0,
+                yellowMinutes: 2,
+                yellowSeconds: 30,
+                redMinutes: 3,
+                redSeconds: 0,
+                resetMinutes: 3,
+                resetSeconds: 30
+            }
+        },
+
         init() {
             this.updateColor();
             this.$watch('elapsedTime', () => this.saveState());
@@ -43,6 +88,22 @@ export function timerApp() {
                 elapsedTime: this.elapsedTime,
                 currentColor: this.currentColor
             }));
+        },
+
+        applyPreset() {
+            if (this.preset === '') return;
+            const preset = this.presets[this.preset];
+            this.$nextTick(() => {
+                this.greenMinutes = preset.greenMinutes;
+                this.greenSeconds = preset.greenSeconds;
+                this.yellowMinutes = preset.yellowMinutes;
+                this.yellowSeconds = preset.yellowSeconds;
+                this.redMinutes = preset.redMinutes;
+                this.redSeconds = preset.redSeconds;
+                this.resetMinutes = preset.resetMinutes;
+                this.resetSeconds = preset.resetSeconds;
+                this.saveState();
+            });
         },
 
         // Computed thresholds

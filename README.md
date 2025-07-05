@@ -8,8 +8,9 @@ A Toastmasters Timer made for Timers
 
 A professional timing tool for Toastmasters meetings with dual-screen functionality - perfect for both physical and virtual meetings.
 
+Visit [https://toastmasters-timer.pages.dev](https://toastmasters-timer.pages.dev) to see how it works!
+
 _I recommended using a desktop or laptop for ease of use._
-_Also, it is usable but I am still planning to add some styling for the main page_
 
 ## Features
 

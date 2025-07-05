@@ -1,11 +1,11 @@
 :root {
     --primary: #004165;
-    --green: #4CAF50;
-    --green-hover: #66BB6A;
+    --green: #127415;
+    --green-hover: #4CAF50;
     --yellow: #FFC107;
     --yellow-hover: #FFD54F;
-    --red: #F44336;
-    --red-hover: #EF5350;
+    --red: #b01a0f;
+    --red-hover: #F44336;
     --loyal-blue: #004165;
     --blissful-blue: #006094;
     --true-maroon: #772432;
@@ -52,6 +52,38 @@ body {
     border-radius: 2px;
 }
 
+.preset-selector {
+    margin: 0 auto 2rem;
+    max-width: 18rem;
+    ;
+    text-align: center;
+}
+
+.preset-selector label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--loyal-blue);
+}
+
+.preset-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--cool-gray);
+    border-radius: var(--border-radius);
+    background-color: white;
+    font-size: 1rem;
+    color: var(--loyal-blue);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.preset-select:focus {
+    outline: none;
+    border-color: var(--blissful-blue);
+    box-shadow: 0 0 0 2px rgba(0, 96, 148, 0.2);
+}
+
 .timer-card {
     background: white;
     border-radius: var(--border-radius);
@@ -90,7 +122,7 @@ body {
     padding: 0.6rem 1.2rem;
     border: none;
     border-radius: var(--border-radius);
-    font-weight: 500;
+    font-weight: 700;
     transition: all 0.2s;
 }
 
