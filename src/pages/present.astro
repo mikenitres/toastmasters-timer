@@ -1,0 +1,116 @@
+---
+import "../styles/present.css";
+---
+
+<html lang="en">
+    <head>
+        <title>Toastmasters Presentation Display</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <input
+            type="text"
+            class="keyboard-listener"
+            id="keyboardListener"
+            aria-hidden="true"
+            tabindex="-1"
+        />
+        <div class="present-display bg-white" id="presentDisplay"></div>
+        <script>
+            // State management
+            let colorCyclingEnabled = true;
+            let canTransition = true;
+            const colors = ["white", "green", "yellow", "red"];
+            let currentColorIndex = 0;
+            const presentDisplay = document.getElementById("presentDisplay");
+            const keyboardListener =
+                document.getElementById("keyboardListener");
+            keyboardListener.focus();
+
+            document.addEventListener("keydown", (e) => {
+                if (!canTransition) return;
+                setTimeout(function () {
+                    canTransition = true;
+                }, 250);
+                if (
+                    e.code === "Space" ||
+                    e.code === "ArrowRight" ||
+                    e.key.toLowerCase() === "d" ||
+                    e.code === "ArrowLeft" ||
+                    e.key.toLowerCase() === "a"
+                ) {
+                    e.preventDefault();
+                    if (
+                        e.code === "Space" ||
+                        e.code === "ArrowRight" ||
+                        e.key.toLowerCase() === "d"
+                    ) {
+                        handleColorCycle();
+                    } else {
+                        handleColorCycleReverse();
+                    }
+                }
+                canTransition = false;
+            });
+
+            const myTap = window.ontouchstart === null ? "touchend" : "click";
+            presentDisplay.addEventListener(myTap, () => {
+                if (!canTransition) return;
+                setTimeout(function () {
+                    canTransition = true;
+                }, 250);
+                handleColorCycle();
+                canTransition = false;
+            });
+
+            // Handlers for manual cycling when going through rules to speaker
+            function handleColorCycle() {
+                if (!colorCyclingEnabled) return;
+                currentColorIndex = (currentColorIndex + 1) % colors.length;
+                updateDisplay(colors[currentColorIndex]);
+                updateLocalStorage(colors[currentColorIndex]);
+            }
+
+            function handleColorCycleReverse() {
+                if (!colorCyclingEnabled) return;
+                currentColorIndex =
+                    (currentColorIndex - 1 + colors.length) % colors.length;
+                updateDisplay(colors[currentColorIndex]);
+                updateLocalStorage(colors[currentColorIndex]);
+            }
+
+            // Display update helper
+            function updateDisplay(color) {
+                presentDisplay.className = `present-display bg-${color}`;
+            }
+
+            function updateLocalStorage(color) {
+                const savedState =
+                    JSON.parse(localStorage.getItem("toastmastersTimer")) || {};
+                savedState.currentColor = color;
+                localStorage.setItem(
+                    "toastmastersTimer",
+                    JSON.stringify(savedState),
+                );
+            }
+
+            // Polling for timer updates
+            setInterval(() => {
+                const savedState =
+                    JSON.parse(localStorage.getItem("toastmastersTimer")) || {};
+                // Disable color cycling if timer is running
+                colorCyclingEnabled = savedState.elapsedTime == 0;
+                // If timer is controlling colors, update display and reset color index to 0
+                if (!colorCyclingEnabled) {
+                    currentColorIndex = 0;
+                }
+                if (currentColorIndex == 0) {
+                    updateDisplay(savedState.currentColor || "white");
+                }
+            }, 250);
+
+            updateDisplay("white");
+        </script>
+    </body>
+</html>
