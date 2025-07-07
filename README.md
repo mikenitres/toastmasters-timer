@@ -12,6 +12,8 @@ Visit [https://toastmasters-timer.pages.dev](https://toastmasters-timer.pages.de
 
 _I recommended using a desktop or laptop for ease of use._
 
+![Homepage Screenshot](readme_media/homepage_screenshot.png)
+
 ## Features
 
 - **Dual-screen workflow**:
