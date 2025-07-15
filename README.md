@@ -1,47 +1,64 @@
-# Astro Starter Kit: Minimal
+# Toastmasters Timer
+A Toastmasters Timer made for Timers
+
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Astro](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=fff)](https://astro.build)
+[![Alpine.js](https://img.shields.io/badge/Alpine.js-8BC0D0?logo=alpinedotjs&logoColor=fff)](https://alpinejs.dev)
+[![Bun](https://img.shields.io/badge/Bun-000?logo=bun&logoColor=fff)](https://bun.sh)
+
+A timing tool for Toastmasters meetings with dual-screen functionality that's perfect for both physical and virtual meetings.
+
+Visit [tmtimer.mikenitres.com](https://tmtimer.mikenitres.com) to see how it works!
+
+_I recommended using a desktop or laptop for ease of use._
+
+![Homepage Screenshot](readme_media/homepage_screenshot.png)
+
+## Features
+
+- **Dual-screen workflow**:
+  - **Main Page**: Set custom timing thresholds
+  - **Present View**: Clean, full-screen color display
+- **Customizable signals**:
+  - 🟢 Green (Minimum Time)
+  - 🟡 Yellow
+  - 🔴 Red (Maximum Time)
+  - ⚪ White (Disqualified)
+
+## Usage
+
+1. **Setup**:
+   - Open the main page
+   - Configure your timing signals with the preset selector (or configure them manually)
+   - Click "Open Present View" (opens in either a new window or tab depending on your browser settings - if as a tab, move it to separate window)
+
+2. **During Meeting**:
+   - Share the Present View window `/present` (fullscreen for best effect)
+   - Manage timing from main page
+   - Colors auto-update in real-time
+
+## Development
+
+Built with modern web technologies:
+
+- [Astro](https://astro.build) - Static site generator
+- [Alpine.js](https://alpinejs.dev) - Reactive interactivity
+- [Bun](https://bun.sh) - Fast JavaScript runtime
+
+### Local Setup
 
 ```sh
-bun create astro@latest -- --template minimal
+bun install          # Install dependencies
+bun run dev          # Start development server
+bun run build        # Production build
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## Contributing
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+If there's anything you think that will be useful, feel free to create an issue or a PR.
 
-## 🚀 Project Structure
+## License
 
-Inside of your Astro project, you'll see the following folders and files:
+Copyright © 2025 Mike Nitres.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
