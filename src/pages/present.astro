@@ -100,7 +100,9 @@ import "../styles/present.css";
                 const savedState =
                     JSON.parse(localStorage.getItem("toastmastersTimer")) || {};
                 // Disable color cycling if timer is running
-                colorCyclingEnabled = savedState.elapsedTime == 0;
+                colorCyclingEnabled =
+                    savedState.elapsedTime == null ||
+                    savedState.elapsedTime == 0;
                 // If timer is controlling colors, update display and reset color index to 0
                 if (!colorCyclingEnabled) {
                     currentColorIndex = 0;
