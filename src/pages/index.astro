@@ -1,5 +1,6 @@
 ---
 import "../styles/main.css";
+import toastmastersLogoMetaImage from "../assets/toatmasters_logo_meta_tag.png";
 ---
 
 <html lang="en">
@@ -7,6 +8,40 @@ import "../styles/main.css";
 		<title>Toastmasters Timer for Timers</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="canonical" href="https://tmtimer.mikenitres.com" />
+		<meta property="og:type" content="website" />
+		<meta
+			name="apple-mobile-web-app-title"
+			content="Toastmasters Timer for Timers"
+		/>
+		<meta property="og:site_name" content="Toastmasters Timer for Timers" />
+		<meta property="og:title" content="Toastmasters Timer for Timers" />
+		<meta name="twitter:title" content="Toastmasters Timer for Timers" />
+		<meta
+			property="og:image:alt"
+			content="Toastmasters Timer for Timers is a web app appointed timers can use for their Toastmasters chapter meetings."
+		/>
+		<meta
+			name="description"
+			property="og:description"
+			content="Toastmasters Timer for Timers is a web app appointed timers can use for their Toastmasters chapter meetings."
+		/>
+		<meta
+			name="twitter:description"
+			content="Toastmasters Timer for Timers is a web app appointed timers can use for their Toastmasters chapter meetings."
+		/>
+
+		<meta property="og:image" content={toastmastersLogoMetaImage.src} />
+		<meta
+			name="twitter:image:src"
+			content={toastmastersLogoMetaImage.src}
+		/>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="author" content="Mike Nitres" />
+		<meta name="copyright" content="Copyright © 2025 Mike Nitres." />
+		<link rel="sitemap" href="/sitemap-index.xml" />
 		<script>
 			import { timerApp } from "../scripts/timer";
 			window.timerApp = timerApp;
